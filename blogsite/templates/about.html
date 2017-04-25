@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block maincontent %}
+{% load my_markdown %}
+    <div class="widewrapper main">
+        <div class="container about">
+                {{ body|my_markdown }}
+                <!--<div class="about-button">
+                <a class="btn btn-xlarge btn-clean-one" href="#">Contact Me</a>
+                </div>-->
+        </div>
+    </div>
+{% endblock %}
+{% block sidepart %}
+{% endblock %}

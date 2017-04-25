@@ -1,0 +1,11 @@
+#static file
+/static/*
+
+#sock file
+*.sock
+
+#db file
+*.sqlite3
+
+#tmp file
+__pycache__
