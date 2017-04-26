@@ -7,5 +7,6 @@
 #db file
 *.sqlite3
 
-#tmp file
+#python tmp file
 __pycache__
+*.pyc
