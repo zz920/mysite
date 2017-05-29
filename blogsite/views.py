@@ -78,7 +78,7 @@ def blogpage(request, pageid):
         return render(request, '404.html')
 
     return_info = dict()
-    return_info['page_id'] = blog_page.pk
+    return_info['page_id'] = pageid
     return_info['title'] = blog_page.title
     return_info['date'] = blog_page.mod_date
     return_info['body'] = blog_page.content
