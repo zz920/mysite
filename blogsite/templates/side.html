@@ -3,21 +3,13 @@
 <aside class="col-md-4 blog-aside">         
     <div class="aside-widget">
         <header>
-            <h3>NOT DECIDE YET PART</h3>
+            <h3>Top 10 news from HackerNews</h3>
         </header>
         <div class="body">
             <ul class="clean-list">
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
-                <li><a href=""> EMPTY ITEM </a></li>
+                {% for link, title in hackernews %}
+                    <li><a href="{{link}}"> {{title|truncatewords:20}} </a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>            

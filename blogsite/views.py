@@ -4,6 +4,8 @@ from django.http import StreamingHttpResponse
 
 from blogsite import models
 from markdown import markdown
+from util.hackercrawler import getHackerNews
+from datetime import datetime
 import os
 import wrapt
 import logging
@@ -19,7 +21,7 @@ def analyzer(wrapped, instance, args, kwargs):
     # save to the database
     """
 
-    request =  None
+    request = None
     if len(args): request = args[0]
 
     if request is not None:
@@ -39,7 +41,8 @@ def homepage(request):
     """
     # Create home page with template index.html
     """
-
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    HACKER_FILE = os.path.join(BASE_DIR, "static", "data", "hacker_news.txt")
     SHOWN_PAGE_NUM = 5      #page number shown in the home page
     return_info = dict()
 
@@ -48,6 +51,10 @@ def homepage(request):
 
         return_info['visit_cnt'] = mainpage.visit_count
         return_info['pages'] = mainpage.getPages()[:SHOWN_PAGE_NUM]
+        return_info['hackernews'] = getHackerNews(
+            datetime.now().strftime("%Y-%m-%d %H-%M-%S"),
+            HACKER_FILE
+        )
     except Exception as e:
         logger.error(e)
         return render(request, 'index_static.html')

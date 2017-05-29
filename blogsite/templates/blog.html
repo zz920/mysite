@@ -7,7 +7,7 @@
             <div class="body">
                 <h1> {{title}} </h1>
                 <div class="meta">
-                    <i class="fa fa-calendar"></i> {{date}} <i class="fa fa-comments"></i><span class="data"><a href="#comments">{{ comments|length }} Comments</a></span>
+                    <i class="fa fa-calendar"></i> {{date}} <i class="fa fa-comments"></i><span class="data"><a href="#comments"> {{ comments|length|plural:"{} Comment" }} </a></span>
                 </div>
                 {{ body|my_markdown }}
             </div>
