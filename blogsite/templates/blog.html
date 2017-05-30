@@ -16,29 +16,33 @@
     </div>
                
 {% endblock %}
-{% block sidepart %}
-<aside class="col-md-4 blog-aside" id="create-comment">    
-        <h2><i class="fa fa-pencil"></i> Add Comment</h2>
-            <form action="add_comment" method="get" accept-charset="utf-8">
-                
-                <textarea rows="13" name="message" id="comment-body" placeholder="Your Message" class="form-control input-lg"></textarea>
-                <input type = "hidden" name="page_id" value="{{page_id}}">
-                <div class="buttons clearfix">
-                    <button type="submit" class="btn btn-xlarge btn-clean-one">Submit</button>
-                </div>
-            </form>
-</aside>
 
+{% block sidepart %}
+    <aside class="col-md-4 blog-aside" id="create-comment">    
+            <h2><i class="fa fa-pencil"></i> Add Comment</h2>
+                <form action="add_comment" method="get" accept-charset="utf-8">
+                
+                    <textarea rows="13" name="message" id="comment-body" placeholder="Your Message" class="form-control input-lg"></textarea>
+                    <input type = "hidden" name="page_id" value="{{page_id}}">
+                    <div class="buttons clearfix">
+                        <button type="submit" class="btn btn-xlarge btn-clean-one">Submit</button>
+                    </div>
+                </form>
+    </aside>
 {% endblock %}
+
 {% block comments %}
-<aside class="comments" id="comments">
+    <aside class="comments" id="comments">
             <hr>
 
             {% for user, dat, cont in comments %}
                 <article class="comment">
                     <header class="clearfix">
                         <div class="meta">
-                            <h3><a href="#">{{user}}</a></h3>
+                            {% for u in user|ipfilter %}
+                                <img src={{u.country}} alt="Unknown Country"> 
+                                <h3><a href="#"> {{u.city}} </a></h3>
+                            {% endfor %}
                             <span class="date">
                                 {{dat}}
                             </span>
@@ -57,5 +61,4 @@
             {% endfor %}
                                
         </aside>
-
 {% endblock %}
